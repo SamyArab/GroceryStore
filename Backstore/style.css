@@ -1,0 +1,130 @@
+html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  height: 100%;
+  padding: 5rem;
+  background-color: rgb(226, 226, 226);
+}
+
+p {
+  /* height: 100%;
+  width: 100%; */
+  font-size: 2.5vh;
+  /* overflow: hidden; */
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  border-radius: 15px;
+  border: 10px solid rgb(55, 57, 58);
+  margin: 15px;
+  /* min-width: 266px;
+  min-height: 300px; */
+
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 13, 14, 0.15);
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border: 5px solid #000000;
+  height: calc(17.5px + 100%);
+  overflow: hidden;
+}
+
+.itemImg {
+  display: flex;
+  max-height: 100%;
+  max-width: 100%;
+  justify-content: left;
+  align-items: center;
+}
+
+.itemName {
+  width: 50%;
+  font-size: calc(0.5px + 2vw);
+}
+
+.btn {
+  margin-left: auto;
+  margin-right: 10px;
+
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.5rem;
+
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #060b0c;
+  background-color: #727272;
+  color: white;
+}
+
+.listHeader {
+  text-align: center;
+  margin-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(194, 194, 194);
+  border-color: rgb(63, 63, 63);
+  border-style: solid;
+  border-radius: 0.5rem;
+  border-width: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.editArea {
+  height: auto;
+  margin: 1rem;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.editFields {
+  width: 100%;
+}
+
+nav {
+  background-color: rgb(39, 39, 39);
+}
+
+.navbtn {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbtn:hover {
+  background-color: rgb(187, 187, 187);
+  color: black;
+}
