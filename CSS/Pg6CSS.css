@@ -93,7 +93,7 @@ form {
 
   
   @media screen and (max-width: 700px) {
-    .resetbtn {
+    .cancelbtn {
       width: 100%;
     }
   } 
