@@ -1,0 +1,94 @@
+form {
+    border-style: solid;
+    border-width: 7px;
+    border-radius: 10px;
+    border-color: #00D6E9;
+    background-color: #dfdfdf;
+    
+  }
+
+  .footer {
+    background-color: #00D6E9;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+  
+  h3{
+    padding: 15px 20px;
+    font-family: Arial;
+  }
+
+  span.home{
+    padding: 15px 20px;
+    font-family: arial;
+    float: right;
+    
+  }
+
+  label{
+    font-family: Arial;
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #00D6E9;
+    color: white;
+    padding: 15px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .cancelbtn {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #8b1b13;
+    border-style:solid;
+    border-width: 2px;
+    border-color: #ff1100;
+  }
+    
+  
+  .container {
+    padding: 16px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #3b7ad8;
+    
+  }
+  
+  span.login {
+    font-family: Arial;
+    float: right;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #3b7ad8;
+
+  }
+  
+  
+
+  
+  @media screen and (max-width: 700px) {
+    .resetbtn {
+      width: 100%;
+    }
+  } 
