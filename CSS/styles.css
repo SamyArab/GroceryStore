@@ -140,7 +140,20 @@ html {
 
     box-shadow: 0em 0em 3em rgba(128,128,128, .15);
 }
+.footer--container {
+    display: flex;
+    justify-content: space-between;
+}
 
+.footer a {
+    text-decoration: none;
+    background-color: white;
+    color: #00D6E9;
+    padding: 1rem;
+    border-radius: .5rem;
+    text-align: left;
+    
+}
 
 
 
