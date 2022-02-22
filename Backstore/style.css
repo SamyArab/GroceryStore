@@ -19,6 +19,7 @@ html {
 
 main>*{
   padding: 2rem;
+  min-height: calc(100vh - 7rem);
   
 }
 
