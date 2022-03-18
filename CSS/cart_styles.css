@@ -51,6 +51,7 @@ color:#440b0b;
 .buttonImages:hover{
     background:#6b8acc7a;
     border-radius:25px;
+    cursor:pointer;
 }
 
 
