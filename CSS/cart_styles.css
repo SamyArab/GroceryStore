@@ -55,7 +55,12 @@ color:#440b0b;
 }
 
 
-.buttonHandling{
+.buttonHandlingPlus{
+    border:none;
+    background:none;
+}
+
+.buttonHandlingMinus{
     border:none;
     background:none;
 }
