@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/styles.css" />
         <script type = "text/javascript" src = "/Store/description.js" defer></script>
+        <script type="text/javascript" src="/Store/item_properties.js" defer></script>
         <title>Fanta Soda</title>
     </head>
     
-    <body>
+    <body onload="getSavedVal('Fanta', 5.99)">
         <header class="header">
             <a href="/index.html" class="logo"><img src="/Images/header/logo.png">G-ZONE</a>
     
@@ -50,11 +51,11 @@
             <div class="info">
                 <h3 class="name">Fanta Orange Soda</h3>
                 <span class="price">$5.99/bottle</span>
-    
+                <span class="price" id="price">Total: $5.99</span>
                 <div class="quantity--controls">
-                    <button class="quantity--sign minus"><img src="/Images/minus.png" alt="minus sign"></button>
-                    <input type="number" name="quantity" min="1" value="1">
-                    <button class="quantity--sign plus"><img src="/Images/plus.png" alt="plus sign"></button>
+                    <button class="quantity--sign minus" onclick="buttonHandling(this, 'Fanta', 5.99)"><img src="/Images/minus.png" alt="minus sign"></button>
+                    <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'Fanta', 5.99)">
+                    <button class="quantity--sign plus" onclick="buttonHandling(this, 'Fanta', 5.99)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
                 <button class="add--cart"> ADD TO CART </button>
                 <button id="more--description"> MORE DESCRIPTION </button>
