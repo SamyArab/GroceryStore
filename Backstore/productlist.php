@@ -1,3 +1,11 @@
+<?php
+session_start();
+print_r($_SESSION);
+if(!isset($_SESSION['is_admin']) || @$_SESSION['is_admin'] == false){
+    echo 'UNAUTHORIZED';
+    die;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
