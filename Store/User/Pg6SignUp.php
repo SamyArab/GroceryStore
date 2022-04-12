@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
 
 <form method="POST">
   <h3>Sign Up Page</h3>
-  <span class="home"><a href="/index.html"> Home </a></span>
+  <span class="home"><a href="/index.php"> Home </a></span>
 
   <div class="container">
 

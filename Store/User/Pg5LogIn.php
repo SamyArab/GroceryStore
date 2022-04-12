@@ -12,9 +12,15 @@ if(isset($_POST['submit'])){
             if($user->email == $_POST['email']){
                 if($user->password == md5(sha1($_POST['psw']))){
                     $_SESSION['email'] = $_POST['email'];
-                    $_SESSION['is_admin'] = $user->isadmin;
+                    $_SESSION['is_admin'] = !empty((string)$user->isadmin);
+                    session_write_close();
 
-                    header('Location: /');
+                    if($_SESSION['is_admin']){
+                      header('Location: /Backstore/productlist.php');
+                    }
+                    else{
+                      header('Location: /');
+                    }
                 }
 
                 break;
@@ -41,7 +47,7 @@ if(isset($_POST['submit'])){
 
 <form method="POST">
   <h3>Login Page</h3>
-  <span class="home"><a href="/index.html"> Home </a></span>
+  <span class="home"><a href="/index.php"> Home </a></span>
 
   <div class="container">
 

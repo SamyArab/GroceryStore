@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +14,7 @@
 
 <body>
     <header class="header">
-        <a href="/index.html" class="logo"><img src="/Images/header/logo.png">G-ZONE</a>
+        <a href="/index.php" class="logo"><img src="/Images/header/logo.png">G-ZONE</a>
 
         <nav class="navbar">
             <ul class="aisles">
@@ -19,6 +23,7 @@
                 <li><a href="/Store/aisle_dairy.html">Dairy</a></li>
                 <li><a href="/Store/aisle_snacks.html">Snacks</a></li>
                 <li><a href="/Store/aisle_bakery.html">Baking</a></li>
+                <li><?= $_SESSION['email'] ?></li>
             </ul>
         </nav>
 
@@ -32,6 +37,7 @@
                     <li><a href="/Store/aisle_bakery.html" class="dropdown-content">Bakery</a></li>
                 </ul>
             </div>
+
 
             <a href="/Store/shopping_cart.html" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
             <a href="/Store/User/Pg5LogIn.html" class="user"><img src="/Images/header/user.png" alt="user-icon"></a>
@@ -236,7 +242,7 @@
     <footer class="footer">
         <div class="footer--container">
             <h5>This page was made by: Samy Arab</h5>
-            <a href="/Backstore/productlist.html">Access the Backstore</a>
+            <a href="/Backstore/productlist.php">Access the Backstore</a>
         </div>
     </footer>
 </body>
