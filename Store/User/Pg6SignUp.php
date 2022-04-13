@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
         }
       }
       else{
-        echo "Account registered, you may now <a href='login.php'>log in</a><br/>";
+        echo "Account registered, you may now <a href='Pg5LogIn.php'>log in</a><br/>";
       }
     }
     ?>
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
         
     <button type="submit" name="submit" value="true">Create Account</button>
 
-    <span class="login"><a href="Pg5LogIn.html"> Already have an account? </a></span>
+    <span class="login"><a href="Pg5LogIn.php"> Already have an account? </a></span>
     
     <p><button type="button" class="cancelbtn">Reset</button></p>
   </div>
