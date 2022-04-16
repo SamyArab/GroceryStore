@@ -235,7 +235,7 @@ html {
     padding-bottom: 1rem;
 }
 
-.more--info, .aisle--link, .add--cart, .more--description {
+.more--info, .aisle--link, .add--cart, #more--description {
     white-space: nowrap;
     text-decoration: none;
     padding: 1rem;
@@ -360,8 +360,12 @@ input:focus, textarea:focus, select:focus{
     width: 2.5rem;
 }
 
+#more--description {
+    cursor: pointer;
+}
 
 .description {
+    display: none;
     font-size: 1rem;
     color: #00D6E9;
     text-align: justify;

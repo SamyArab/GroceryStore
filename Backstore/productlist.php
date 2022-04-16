@@ -1,3 +1,5 @@
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +16,10 @@
 <body>
     <header class = "header">
         <nav>
-            <a class="navbtn" href="./productlist.html">Product List</a>
+            <a class="navbtn" href="./productlist.php">Product List</a>
             <a class="navbtn" href="./userlist.html">User List</a>
             <a class="navbtn" href="./orderlist.html">Order List</a>
+            <a class="navbtn" href="#"><?= $_SESSION['email'] ?></a>
         </nav>
     </header>
 
@@ -63,7 +66,7 @@
     <footer>
 
         <span>Made By Tanzir Hoque & Nicholas Piperni</span>
-        <a class = "btn" href="/index.html">Go Back</a>
+        <a class = "btn" href="/index.php">Go Back</a>
 
     </footer>
 

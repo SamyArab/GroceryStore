@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css" />
+    <script type = "text/javascript" src = "/Store/description.js" defer></script>
+    <script type="text/javascript" src="/Store/item_properties.js" defer></script>
     <title>Orange Juice</title>
 </head>
 
-<body>
+<body onload="getSavedVal('OrangeJuice', 6.99)">
     <header class="header">
-        <a href="/index.html" class="logo"><img src="/Images/header/logo.png">G-ZONE</a>
+        <a href="/index.php" class="logo"><img src="/Images/header/logo.png">G-ZONE</a>
 
         <nav class="navbar">
             <ul class="aisles">
@@ -34,7 +36,7 @@
             </div>
 
             <a href="/Store/shopping_cart.html" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
-            <a href="/Store/User/Pg5LogIn.html" class="user"><img src="/Images/header/user.png" alt="user-icon"></a>
+            <a href="/Store/User/Pg5LogIn.php" class="user"><img src="/Images/header/user.png" alt="user-icon"></a>
         </div>
     </header>
 
@@ -49,14 +51,14 @@
             <div class="info">
                 <h3 class="name">Orange Juice</h3>
                 <span class="price">$6.99/bottle</span>
-
+                <span class="price" id="price">Total: $6.99</span>
                 <div class="quantity--controls">
-                    <button class="quantity--sign minus"><img src="/Images/minus.png" alt="minus sign"></button>
-                    <input type="number" name="quantity" min="1" value="1">
-                    <button class="quantity--sign plus"><img src="/Images/plus.png" alt="plus sign"></button>
+                    <button class="quantity--sign minus" onclick="buttonHandling(this, 'OrangeJuice', 6.99)"><img src="/Images/minus.png" alt="minus sign"></button>
+                    <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'OrangeJuice', 6.99)">
+                    <button class="quantity--sign plus" onclick="buttonHandling(this, 'OrangeJuice', 6.99)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
                 <button class="add--cart"> ADD TO CART </button>
-                <button class="more--description dropdown"> MORE DESCRIPTION </button>
+                <button id="more--description"> MORE DESCRIPTION </button>
 
             </div>
         </div>

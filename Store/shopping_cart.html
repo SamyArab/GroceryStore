@@ -2,8 +2,9 @@
 <html lang="en">
 <link rel="stylesheet" href="/CSS/cart_styles.css">
 <head style = "text-align: left; color:#00D6E9;">
-    <a href = "../index.html" >Continue Shopping </a>
+    <a href = "../index.php" >Continue Shopping </a>
     <title>G-ZONE | Shopping Cart</title>
+    <script type = "text/javascript" src = "shopping_cart.js" defer></script>
 
 </head>
 
@@ -36,11 +37,11 @@
                                 <div class="itemPrice">
                                     $7.29
                                 </div>
-                                <button alt = "Minus Sign" class ="buttonHandling"> <img src = "/Images/minus.png" class = "buttonImages"></button>
+                                <button alt = "Minus Sign" class ="buttonHandlingMinus" onclick= "buttonHandling(this)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
                                 <div class="itemQuantity">
                                     Qty: x5
                                 </div>
-                                <button alt = "Plus Sign" class ="buttonHandling"> <img src = "/Images/plus.png" class = "buttonImages"></button>
+                                <button alt = "Plus Sign" class ="buttonHandlingPlus" onclick= "buttonHandling(this)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
 
                             </div>
 
@@ -63,12 +64,12 @@
                                     $7.39
                                 </div>
                                
-                                   <button alt = "Minus Sign" class ="buttonHandling"> <img src = "/Images/minus.png" class = "buttonImages"></button>
+                                   <button alt = "Minus Sign" class ="buttonHandlingMinus" onclick= "buttonHandling(this)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
                                
                                 <div class="itemQuantity">
                                     Qty: x2
                                 </div>
-                                <button alt = "Plus Sign" class ="buttonHandling"> <img src = "/Images/plus.png" class = "buttonImages"></button>
+                                <button alt = "Plus Sign" class ="buttonHandlingPlus" onclick= "buttonHandling(this)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
                             </div>
 
                         </li>
@@ -89,11 +90,11 @@
                                 <div class="itemPrice">
                                     $4.09
                                 </div>
-                                <button alt = "Minus Sign" class ="buttonHandling"> <img src = "/Images/minus.png" class = "buttonImages"></button>
+                                <button alt = "Minus Sign" class ="buttonHandlingMinus" onclick= "buttonHandling(this)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
                                 <div class="itemQuantity">
                                     Qty: x1
                                 </div>
-                                <button alt = "Plus Sign" class ="buttonHandling"> <img src = "/Images/plus.png" class = "buttonImages"></button>
+                                <button alt = "Plus Sign" class ="buttonHandlingPlus" onclick= "buttonHandling(this)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
 
                             </div>
 
@@ -116,16 +117,18 @@
             </div>
             <div class="scrollableMoneyList">
                 <br><br>
-                <h3>Ground Beef x5 $36.45</h3>
-                <h3>Halal Beef x2 $14.78</h3>
-                <h3>Whole Chicken x1 $4.09</h3>
+
+                <h3 class = "totalItems">Ground Beef x5 $36.45</h3>
+                <h3 class = "totalItems">Halal Beef x2 $14.78</h3>
+                <h3 class = "totalItems">Whole Chicken x1 $4.09</h3>
 
             </div>
-            <h1>Total Items: 8</h1>
+
+            <h1 class = "totalQuantityOfItems">Total Items: 8</h1>
             <br>
             <div class="taxes">
-                <h2>QST: $5.52</h2>
-                <h2>GST: $2.77</h2>
+                <h2 class = "QST">QST: $5.39</h2>
+                <h2 class = "GST">GST: $2.77</h2>
 
             </div>
             <div style="height: 5%">
@@ -133,7 +136,7 @@
             </div>
 
             <div class="totalSum">
-                Total: $63.61
+                Total: $63.48
             </div>
 
         </div>
