@@ -1,3 +1,8 @@
+<?php
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +35,7 @@
                         <input class="editFields" name="uPsw" type="text" placeholder="Enter password">
                     </div>
                     <br>
-                    <button class="btn">Save</button>
+                    <button class="btn" type="save" name="save" value="true">Save</button>
                 </div>
             </form>
 

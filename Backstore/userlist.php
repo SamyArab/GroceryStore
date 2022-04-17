@@ -24,29 +24,42 @@
                 <h1>Profile List</h1>
                 <a class="btn" href="./user_add.php">Add</a>
             </div>
-            <div class="itemList">
-                <div class="item">
-                    <h2 class="itemName">uniProf412@outlook.com</h2>
-                    <a class="btn" href="./user_edit.html">Edit</a>
-                    <button class="btn">Delete</button>
-                </div>
-                <div class="item">
-                    <h2 class="itemName">groceryShopper1922@gmail.com</h2>
-                    <a class="btn" href="./user_edit.html">Edit</a>
-                    <button class="btn">Delete</button>
-                </div>
-                <div class="item">
-                    <h2 class="itemName">spectacularJohn444@yahoo.ca</h2>
-                    <a class="btn" href="./user_edit.html">Edit</a>
-                    <button class="btn">Delete</button>
-                </div>
-                <div class="item">
-                    <h2 class="itemName">munchlax111@gmail.com</h2>
-                    <a class="btn" href="./user_edit.html">Edit</a>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
+
+            <div class="itemList" id="emails"></div>
+
+            <script>
+                loadXMLDoc();
+                function loadXMLDoc() {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            displayUsers(this);
+                        }
+                    };
+                    xmlhttp.open("GET", "../Store/User/users.xml", true);
+                    xmlhttp.send();
+                }
+                function displayUsers(xml){
+                    var i;
+                    var xmlDoc = xml.responseXML;
+                    var div ="";
+                    var x = xmlDoc.getElementsByTagName("user");
+                    for(i = 0; i<x.length; i++){
+                        div += "<div class = \"item\">"+
+                        "<h2 class = \"itemName\">"+
+                        x[i].getElementsByTagName("email")[0].childNodes[0].nodeValue+
+                        "</h2>"+
+                        "<a class =\"btn\" href = \"./user_edit.php\">Edit</a>"+
+                        "<button class=\"btn\">Delete</button>"+
+                        "</div>"+
+                        "</div>"
+                    }
+                    document.getElementById("emails").innerHTML = div;
+                }
+            </script>
+
         </div>
+
     </main>
     <footer>
 
