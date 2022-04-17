@@ -35,6 +35,7 @@ if(isset($_POST['add'])){
             $user->addChild('email', $_POST['uEmail']);
             $user->addChild('password', md5(sha1($_POST['uPsw'])));
             $user->addChild('isadmin', false);
+            $user->addChild('shoppingCart', json_encode(array(), 0, 512));
 
             file_put_contents('../Store/User/users.xml', $xml->asXML());
 
