@@ -20,6 +20,14 @@
                 <li><a href="/Store/aisle_dairy.html">Dairy</a></li>
                 <li><a href="/Store/aisle_snacks.html">Snacks</a></li>
                 <li><a href="/Store/aisle_bakery.html">Baking</a></li>
+<?php if(isset($_SESSION['email'])){ ?>
+                        <li><?php echo $_SESSION['email'] ?> </li>
+                
+                <?php }else{
+
+                 ?>
+                 <li></li>
+                 <?php } ?>
             </ul>
         </nav>
 
@@ -34,7 +42,7 @@
                 </ul>
             </div>
 
-            <a href="/Store/shopping_cart.html" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
+            <a href="/Store/shopping_cart.php" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
             <a href="/Store/User/Pg5LogIn.php" class="user"><img src="/Images/header/user.png" alt="user-icon"></a>
         </div>
     </header>
@@ -46,7 +54,7 @@
 
         <section class="item--list">
 
-            <a href="/Store/dairy_products/milk.html " style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/dairy_products/milk.php " style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/dairy/milk.png" alt="milk">
                     <div class="item--info">
@@ -58,7 +66,7 @@
                 </div>
             </a>
 
-            <a href="/Store/dairy_products/chocolate_milk.html " style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/dairy_products/chocolate_milk.php " style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/dairy/chocolate_milk.png" alt="chocolate milk">
                     <div class="item--info">
@@ -70,7 +78,7 @@
                 </div>
             </a>
 
-            <a href="/Store/dairy_products/butter.html " style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/dairy_products/butter.php " style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/dairy/butter.png" alt="butter">
                     <div class="item--info">
@@ -82,7 +90,7 @@
                 </div>
             </a>
 
-            <a href="/Store/dairy_products/cheese.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/dairy_products/cheese.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/dairy/cheese.png" alt="cheese">
                     <div class="item--info">
@@ -94,7 +102,7 @@
                 </div>
             </a>
 
-            <a href="/Store/dairy_products/ice_cream.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/dairy_products/ice_cream.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/dairy/ice_cream.png" alt="ice cream">
                     <div class="item--info">
@@ -106,7 +114,7 @@
                 </div>
             </a>
 
-            <a href="/Store/dairy_products/eggs.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/dairy_products/eggs.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/dairy/eggs.png" alt="eggs">
                     <div class="item--info">

@@ -23,7 +23,15 @@ session_start();
                 <li><a href="/Store/aisle_dairy.html">Dairy</a></li>
                 <li><a href="/Store/aisle_snacks.html">Snacks</a></li>
                 <li><a href="/Store/aisle_bakery.html">Baking</a></li>
-                <li><?= $_SESSION['email'] ?></li>
+<?php if(isset($_SESSION['email'])){ ?>
+                        <li><?php echo $_SESSION['email'] ?> </li>
+                
+                <?php }else{
+
+                 ?>
+                 <li></li>
+                 <?php } ?>
+                
             </ul>
         </nav>
 
@@ -39,7 +47,7 @@ session_start();
             </div>
 
 
-            <a href="/Store/shopping_cart.html" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
+            <a href="/Store/shopping_cart.php" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
             <a href="/Store/User/Pg5LogIn.php" class="user"><img src="/Images/header/user.png" alt="user-icon"></a>
         </div>
     </header>

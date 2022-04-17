@@ -27,5 +27,8 @@ function buttonHandling(button, product, price){
    quantityField.value = parseInt(quantity);
    document.getElementById("price").innerHTML = "Total: $" + (quantity * price).toFixed(2);
 
+  
+
+
    localStorage.setItem(product, quantity);
 }

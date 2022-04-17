@@ -13,6 +13,8 @@ if(isset($_POST['submit'])){
                 if($user->password == md5(sha1($_POST['psw']))){
                     $_SESSION['email'] = $_POST['email'];
                     $_SESSION['is_admin'] = !empty((string)$user->isadmin);
+                    $_SESSION['shoppingCart'] = (string)$user->shoppingCart;
+                    
                     session_write_close();
 
                     if($_SESSION['is_admin']){

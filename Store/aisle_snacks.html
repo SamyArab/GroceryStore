@@ -22,6 +22,14 @@
                 <li><a href="/Store/aisle_dairy.html">Dairy</a></li>
                 <li><a href="/Store/aisle_snacks.html">Snacks</a></li>
                 <li><a href="/Store/aisle_bakery.html">Baking</a></li>
+<?php if(isset($_SESSION['email'])){ ?>
+                        <li><?php echo $_SESSION['email'] ?> </li>
+                
+                <?php }else{
+
+                 ?>
+                 <li></li>
+                 <?php } ?>
             </ul>
         </nav>
 
@@ -36,7 +44,7 @@
                 </ul>
             </div>
 
-            <a href="/Store/shopping_cart.html" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
+            <a href="/Store/shopping_cart.php" class="cart"><img src="/Images/header/cart.png" alt="cart-icon"></a>
             <a href="/Store/User/Pg5LogIn.php" class="user"><img src="/Images/header/user.png" alt="user-icon"></a>
         </div>
     </header>
@@ -48,7 +56,7 @@
         <section class="item--list">
 
 
-            <a href="/Store/snacks_products/RitzCrackers.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/RitzCrackers.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/RitzCrackers.png">
                     <div class="item--info">
@@ -60,7 +68,7 @@
                 </div>
             </a>
 
-            <a href="/Store/snacks_products/QuakerBars.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/QuakerBars.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/QuakerBars.png">
                     <div class="item--info">
@@ -72,7 +80,7 @@
                 </div>
             </a>
 
-            <a href="/Store/snacks_products/LaysChips.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/LaysChips.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/LaysChips.png">
                     <div class="item--info">
@@ -93,7 +101,7 @@
 
         <section class="item--list">
 
-            <a href="/Store/snacks_products/AppleJuice.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/AppleJuice.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/AppleJuice.png">
                     <div class="item--info">
@@ -105,7 +113,7 @@
                 </div>
             </a>
 
-            <a href="/Store/snacks_products/OrangeJuice.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/OrangeJuice.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/OrangeJuice.png">
                     <div class="item--info">
@@ -117,7 +125,7 @@
                 </div>
             </a>
 
-            <a href="/Store/snacks_products/FantaSoda.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/FantaSoda.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/Fanta.png">
                     <div class="item--info">
@@ -129,7 +137,7 @@
                 </div>
             </a>
 
-            <a href="/Store/snacks_products/ChardonnayWine.html" style="text-decoration: inherit; color: inherit;">
+            <a href="/Store/snacks_products/ChardonnayWine.php" style="text-decoration: inherit; color: inherit;">
                 <div class="items">
                     <img src="/Images/snacks/BogleChardonnay.png">
                     <div class="item--info">
