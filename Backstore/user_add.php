@@ -69,6 +69,19 @@ if(isset($_POST['add'])){
             <form method = "POST">
                 <div class="editorContainer">
                     <h1 style="align-self: center;">Add User Profile</h1>
+                    <?php
+                        if(isset($errors)){
+                            if(!empty($errors)){
+                                foreach($errors as $error){
+                                    echo '- '.$error."<br/>";
+                                }
+                            }
+                            else{
+                                echo "Account Added successfully";
+                            }
+                        }
+                    ?>
+
                     <div class="editArea">
                         <p>User Email:</p>
                         <input class="editFields" name="uEmail" type="text" placeholder="Enter User Email">
