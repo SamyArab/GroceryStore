@@ -1,5 +1,18 @@
+<?php
+ class product{
+     private $name;
+     private $price;
+     private $description;
 
+     public function __construct($n, $p, $d){
+        $this->name = $n;
+        $this->price = $p;
+        $this->desription = $d;
+     }
+
+ }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +30,7 @@
     <header class = "header">
         <nav>
             <a class="navbtn" href="./productlist.php">Product List</a>
-            <a class="navbtn" href="./userlist.html">User List</a>
+            <a class="navbtn" href="./userlist.php">User List</a>
             <a class="navbtn" href="./orderlist.html">Order List</a>
             <a class="navbtn" href="#"><?= $_SESSION['email'] ?></a>
         </nav>

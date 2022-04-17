@@ -12,26 +12,29 @@
     <header class = "header">
         <nav>
             <a class="navbtn" href="./productlist.php">Product List</a>
-            <a class="navbtn" href="./userlist.html">User List</a>
+            <a class="navbtn" href="./userlist.php">User List</a>
             <a class="navbtn" href="./orderlist.html">Order List</a>
         </nav>
     </header>
     <main>
         <div class="pageContainer">
-        
-            <div class="editorContainer">
-                <h1 style="align-self: center;">Edit Product</h1>
-                <div class="editArea">
-                    <p>Product Name:</p>
-                    <input class="editFields" type="text" placeholder="Enter product name">
-                    <p>Price:</p>
-                    <input class="editFields" type="text" placeholder="Enter product price in dollars">
-                    <p>Description:</p>
-                    <textarea class="editFields" name="" id="" cols="30" rows="10" placeholder="Enter information about the product"></textarea>
+
+            <form method="POST">
+                <div class="editorContainer">
+                    <h1 style="align-self: center;">Edit Product</h1>
+                    <div class="editArea">
+                        <p>Product Name:</p>
+                        <input class="editFields" type="text" name="pName" placeholder="Enter product name">
+                        <p>Price:</p>
+                        <input class="editFields" type="text" name="pPrice" placeholder="Enter product price in dollars">
+                        <p>Description:</p>
+                        <textarea class="editFields" name="pDesc" id="" cols="30" rows="10" placeholder="Enter information about the product"></textarea>
+                    </div>
+                    <br>
+                    <button class="btn">Save</button>
                 </div>
-                <br>
-                <button class="btn">Save</button>
-            </div>
+            </form>
+
         </div>
     </main>
     <footer>

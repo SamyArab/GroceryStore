@@ -13,7 +13,7 @@
     <header class ="header">
         <nav>
             <a class="navbtn" href="./productlist.php">Product List</a>
-            <a class="navbtn" href="./userlist.html">User List</a>
+            <a class="navbtn" href="./userlist.php">User List</a>
             <a class="navbtn" href="./orderlist.html">Order List</a>
         </nav>
     </header>
@@ -22,7 +22,7 @@
         
             <div class="listHeader">
                 <h1>Profile List</h1>
-                <a class="btn" href="./user_edit.html">Add</a>
+                <a class="btn" href="./user_add.php">Add</a>
             </div>
             <div class="itemList">
                 <div class="item">
