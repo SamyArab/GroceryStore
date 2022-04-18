@@ -46,7 +46,8 @@ if(isset($_POST["addToCart"])){
           $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
 
         }
-          }
+          
+          
          
           
 
@@ -60,7 +61,7 @@ if(isset($_POST["addToCart"])){
   
           foreach($xml->user as $user){
               if($user->email == $_SESSION["email"]){
-                  echo "woohoo";
+                 
                   $user->shoppingCart = $_SESSION["shoppingCart"];
                   
               }
@@ -75,7 +76,16 @@ if(isset($_POST["addToCart"])){
         fclose($xmlUserData);
 
          
+        }else{
+
+            header("Location: ../User/Pg5LogIn.php", true, 302);
+            exit();
            
+      
+            
+    
+    
+        } 
 
          
              
@@ -83,15 +93,6 @@ if(isset($_POST["addToCart"])){
           
        
           
-    }else{
-
-        header("Location: ../User/Pg5LogIn.php", true, 302);
-        exit();
-       
-  
-        
-
-
     }
 
 

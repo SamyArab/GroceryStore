@@ -39,6 +39,15 @@ a:hover{
 color:#440b0b;
 }
 
+.save{
+    color:#00D6E9;
+}
+
+.save:hover{
+cursor: pointer;
+background-color:#dddddd;
+}
+
 
 
 
@@ -58,13 +67,18 @@ color:#440b0b;
 .buttonHandlingPlus{
     border:none;
     background:none;
+    z-index:1;
 }
 
 .buttonHandlingMinus{
     border:none;
     background:none;
+    z-index:1;
 }
 
+form{
+    margin-bottom: 0%;
+}
 
 .listHandling{
     
@@ -285,6 +299,22 @@ h1{
     
 }
 
+input[type = number]{
+    color:rgba(0, 213, 233, 1);
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    background-color:#00d6e900;
+    background:none;
+    text-align: center;
+    position:relative;
+    border:none;
+    font-size: 2rem;
+    width: 5rem;
+    
+}
+
 @media only screen and (min-width: 768px) and (min-height: 420px){
 
 .ListHeader{width: 100%;}
@@ -295,13 +325,27 @@ img{width: 80px; height:80px;}
 li{padding:15px; height: 80px;}
 .scrollableList{height:100%;}
 .itemQuantity{font-size: 20px;}
-
+form{height: 12.5%;}
+.save{height: 12.5%;
+      width: 100%;
+      font-size:calc(7.5px + 1.5vw);
+      border: 0.25rem solid #00D6E9;
+     
+}
 
 }
 
 
 
+
 @media only screen and (max-device-width : 480px){
+    form{height: 12.5%; }
+    .save{height: 12.5%;
+          width: 100%;
+          font-size:calc(7.5px + 3.5vw);
+          border: 0.5rem solid #00D6E9;
+        
+        }
 
     .shoppingCart{
         display:flex;

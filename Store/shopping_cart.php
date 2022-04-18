@@ -1,16 +1,66 @@
 <?php
 session_start();
+
 $sessionList;
+$newSessionList;
+$xml = @simplexml_load_file('User/users.xml');
+
+
+foreach($xml->user as $user){
+    if($user->email == $_SESSION['email']){
+       
+            
+            $_SESSION['shoppingCart'] = (string)$user->shoppingCart;
+            break;
+    }
+}
+      
+
+
 
 if(isset($_SESSION["email"])){
     $sessionList = json_decode($_SESSION["shoppingCart"], true, 512, 0);
     
-    foreach($sessionList as $data){
-        print_r($data);
-    }
+   
 }else{
 
 }
+
+$counter = count($sessionList)-1;
+
+                              if(isset($_POST["save"])){
+                                  
+                              for($i = 0; $i <= $counter; $i++){
+                                  $productInfoArray = explode(" ", $sessionList[$i]);
+                                 $productInfoArray[2] = "Qty:" . $_POST["quantity_" . (String)$i];
+                                  
+                                 $sessionList[$i] = implode(" ", $productInfoArray);
+                                
+                                 
+                              }
+                              
+                              $_SESSION["shoppingCart"] = json_encode($sessionList, 0, 512);
+
+                              foreach($xml->user as $user){
+                                if($user->email == $_SESSION["email"]){
+                                   
+                                    $user->shoppingCart = $_SESSION["shoppingCart"];
+                                    
+                                }
+                                
+                            }
+                            $stringinfo = (String)($xml -> asXML());
+                            
+                            
+                            $xmlUserData = fopen("User/users.xml", 'w');
+                  
+                          fwrite($xmlUserData, $stringinfo);
+                          fclose($xmlUserData);
+                          header("Location: shopping_cart.php", true, 302);
+                          exit();
+                              }else{
+                              
+                              }
 
 
 ?>
@@ -30,6 +80,7 @@ if(isset($_SESSION["email"])){
 <body>
     <div class="shoppingCart">
         <div class="listHandling">
+        
             <div class="ListHeader">
                 <strong>
                     Item List
@@ -37,15 +88,16 @@ if(isset($_SESSION["email"])){
             </div>
             <div class="itemList">
 
-
+                
                 <div class="scrollableList">
+                <form method = "POST">
                     <ol>
 
 
                         <?php
-
+                            
                             if(isset($sessionList)){
-
+                                $counter1 = 0;
                                 foreach($sessionList as $data){
                                     $product = explode(" ", $data);
                                     $productName;
@@ -68,7 +120,7 @@ if(isset($_SESSION["email"])){
                                    
                                  
                                
-                                    
+                                   
                                     ?>
 
                                 <li>
@@ -85,11 +137,13 @@ if(isset($_SESSION["email"])){
                                     <?=$productPrice?>
                                 </div>
                                 
-                                <button alt = "Minus Sign" name = "minus <?=$productName?>" class ="buttonHandlingMinus" onclick= "buttonHandling(this, <?= $productQty?>)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
-                                <div class="itemQuantity">
-                                    <span name = "value <?=$productName?>">Qty: x<?=$productQty?></span>
-                                </div>
-                                <button alt = "Plus Sign" name = "plus <?=$productName?>" class ="buttonHandlingPlus" onclick= "buttonHandling(this, <?= $productQty?>)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
+                                <button alt = "Minus Sign" type = "button" name = "minus <?=$counter1?>" class ="buttonHandlingMinus" onclick= "buttonHandling(this, <?= $productQty?>)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
+                               
+                                    
+                                    <input type="number" name="quantity <?=$counter1?>" min="1" value="<?=$productQty?>" onchange="buttonHandling(this)" class = "itemQuantity">
+                                   
+                               
+                                <button alt = "Plus Sign" type = "button" name = "plus <?=$counter1?>" class ="buttonHandlingPlus" onclick= "buttonHandling(this, <?=$productQty?>)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
                                 
                                 <div>
                                     
@@ -97,14 +151,10 @@ if(isset($_SESSION["email"])){
                                 </li>
 
 
-                                <?php }
+                                <?php $counter1++;}
 
 
-                            }
-
-
-
-                            ?>
+                                }?>
                         
                         
 
@@ -114,7 +164,14 @@ if(isset($_SESSION["email"])){
 
 
             </div>
+            
+            
+            <button alt = "SAVE" class = "save" name ="save"> Save </button>
+                               
+                        </form>
         </div>
+
+      
 
         <div class="moneyHandling">
             <div class="ListHeader">
@@ -124,18 +181,51 @@ if(isset($_SESSION["email"])){
             </div>
             <div class="scrollableMoneyList">
                 <br><br>
+                <?php 
+                
+                if(isset($sessionList)){
+                    $QST = 0;
+                    $GST = 0;
+                    $totalQty = 0;
+                    $priceBeforeTax = 0;
+                    $totalPrice = 0;
+                    
+                                foreach($sessionList as $data){
+                                    $product = explode(" ", $data);
+                                    $productName;
+                                    $productImgAddress;
+                                    $productPrice;
+                                    
+                                    if(strpos($product[0], "_") !== false){
+                                    $productNameCompound = explode("_", $product[0]);
+                                    $productName= implode(" ", $productNameCompound);
+                                    }else{
+                                        $productName = $product[0];
+                                    }
+                                    $productQty = explode(":", $product[2])[1];
+                                    $totalQty += (int)$productQty;
+                                    
+                                    $productPrice = (double)$product[1] * (double)$productQty;
+                                    $QST += 0.0975 * $productPrice;
+                                    $GST += 0.05 * $productPrice;
+                                    $priceBeforeTax += $productPrice;
 
-                <h3 class = "totalItems">Ground Beef x5 $36.45</h3>
-                <h3 class = "totalItems">Halal Beef x2 $14.78</h3>
-                <h3 class = "totalItems">Whole Chicken x1 $4.09</h3>
+
+                
+                
+                ?>
+                <h3 class = "totalItems"><?=$productName?> x<?=$productQty?> $<?=number_format((float)$productPrice, 2, '.', '')?> </h3>
+
+                <?php }}?>
+                
 
             </div>
 
-            <h1 class = "totalQuantityOfItems">Total Items: 8</h1>
+            <h1 class = "totalQuantityOfItems">Total Items: <?=$totalQty?></h1>
             <br>
             <div class="taxes">
-                <h2 class = "QST">QST: $5.39</h2>
-                <h2 class = "GST">GST: $2.77</h2>
+                <h2 class = "QST">QST: $<?=number_format((float)$QST, 2, '.', '')?></h2>
+                <h2 class = "GST">GST: $<?=number_format((float)$GST, 2, '.', '')?></h2>
 
             </div>
             <div style="height: 5%">
@@ -143,7 +233,7 @@ if(isset($_SESSION["email"])){
             </div>
 
             <div class="totalSum">
-                Total: $63.48
+                Total: $<?php $totalPrice = $priceBeforeTax + $QST + $GST; echo number_format((float)$totalPrice, 2, '.', '');?>
             </div>
 
         </div>

@@ -4,8 +4,10 @@
 function buttonHandling(button, sessionQuantity){
    var x = button.parentNode;
    var itemType = x.getElementsByClassName("itemDescription").item(0).innerText;
-   var text = x.getElementsByClassName("itemQuantity").item(0).innerText;
-   var intQuantity = parseInt(text.substring(6, text.length));
+ 
+   var intQuantity = parseInt(x.getElementsByClassName("itemQuantity").item(0).value);
+
+
    var rawPrice = x.getElementsByClassName("itemPrice").item(0).innerText;
    var price = parseFloat(rawPrice.substring(1, rawPrice.length));
    var totalPriceOfAllItems = 0;
@@ -34,7 +36,7 @@ function buttonHandling(button, sessionQuantity){
    
    var quantity  = intQuantity.toString();
 
-   x.getElementsByClassName("itemQuantity").item(0).innerText = "Qty: x" + quantity;
+   x.getElementsByClassName("itemQuantity").item(0).value =  quantity;
   
 
    
@@ -60,8 +62,8 @@ function buttonHandling(button, sessionQuantity){
    var totalQuantityOfItems = 0;
 
    for(i = 0; i < document.getElementsByClassName("item").length; i++){
-       var quantityText = document.getElementsByClassName("item").item(i).getElementsByClassName("itemQuantity").item(0).innerText;
-       totalQuantityOfItems += parseInt(quantityText.substring(6, quantityText.length));
+       var quantityText = document.getElementsByClassName("item").item(i).getElementsByClassName("itemQuantity").item(0).value;
+       totalQuantityOfItems += parseInt(quantityText);
    }
 
    document.getElementsByClassName("totalQuantityOfItems").item(0).innerText = "Total Items: " + totalQuantityOfItems;
