@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(isset($_POST['add'])){
     $errors = [];
@@ -62,6 +63,7 @@ if(isset($_POST['add'])){
             <a class="navbtn" href="./productlist.php">Product List</a>
             <a class="navbtn" href="./userlist.php">User List</a>
             <a class="navbtn" href="./orderlist.php">Order List</a>
+            <a class="navbtn" href="#"><?= $_SESSION['email'] ?></a>
         </nav>
     </header>
     <main>
