@@ -21,7 +21,7 @@
                 foreach($xml->user as $user){
                     if($user->email == $_SESSION["editEmail"] && $user->password == $_SESSION["editPsw"]){
                         $user->email = $newEmail;
-                        $user->password = $newPsw;
+                        $user->password = md5(sha1($newPsw));
                         $xml->asXML('=../Store/User/users.xml');
                         $message = "The user has been edited successfully!";
                         break;
@@ -63,7 +63,7 @@
                         <p>User Email:</p>
                         <input class="editFields" name="uEmail" type="text" placeholder="Edit User Email"<?php if(isset($editEmail)) {print "value=\"$editEmail\"";} ?>>
                         <p>Password:</p>
-                        <input class="editFields" name="uPsw" type="text" placeholder="Enter password"<?php if(isset($editPsw)) {print "value=\"$editPsw\"";} ?>>
+                        <input class="editFields" name="uPsw" type="text" placeholder="Enter a New password">
                         <input type="hidden" name="add" value="edit">
                         <input type="submit" class="btn" value="Save" style="float: right; margin-top: 20px;">
                     </form> 
