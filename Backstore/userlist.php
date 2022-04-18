@@ -1,3 +1,19 @@
+<?php
+
+    $xml = @simplexml_load_file('../Store/User/users.xml');
+    if(isset($_POST["deleteUser"])){
+        foreach($xml->user as $user){
+            if($user->email == $_POST["deleteUser"]){
+                unset($user[0]);
+                $xml->asXML('../Store/User/users.xml');
+                break;
+            }
+        }
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,39 +41,28 @@
                 <a class="btn" href="./user_add.php">Add</a>
             </div>
 
-            <div class="itemList" id="emails"></div>
+            <div class="itemList" id="emails">
+                <?php
+                    foreach($xml ->user as $user){
+                        print "<div class = \"item\">";
+                        print "<h2 class = \"itemName\">$user->email</h2>";
 
-            <script>
-                loadXMLDoc();
-                function loadXMLDoc() {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            displayUsers(this);
-                        }
-                    };
-                    xmlhttp.open("GET", "../Store/User/users.xml", true);
-                    xmlhttp.send();
-                }
-                function displayUsers(xml){
-                    var i;
-                    var xmlDoc = xml.responseXML;
-                    var div ="";
-                    var x = xmlDoc.getElementsByTagName("user");
-                    for(i = 0; i<x.length; i++){
-                        div += "<div class = \"item\">"+
-                        "<h2 class = \"itemName\">"+
-                        x[i].getElementsByTagName("email")[0].childNodes[0].nodeValue+
-                        "</h2>"+
-                        "<a class =\"btn\" href = \"./user_edit.php\">Edit</a>"+
-                        "<button class=\"btn\">Delete</button>"+
-                        "</div>"+
-                        "</div>"
+                        print "<form action=\"./user_edit.php\" method=\"post\">";
+                        print "<input type=\"hidden\" name=\"editEmail\" value=\"$user->email\">";
+                        print "<input type=\"hidden\" name=\"editPsw\" value=\"$user->password\">";
+                        print "<input type=\"submit\" name=\"edit\" value=\"Edit\" class=\"btn\">";
+                        print "</form>";
+
+                        print "<form method=\"post\">";
+                        print "<input type=\"hidden\" name=\"deleteUser\" value=\"$user->email\">";
+                        print "<input type=\"submit\" name=\"delete\" value=\"Delete\" class=\"btn\" style=\"float: right; margin-left: 50px;\">";
+                        print "</form>";
+
+                        print "</div>";
+
                     }
-                    document.getElementById("emails").innerHTML = div;
-                }
-            </script>
-
+                ?>
+            </div>
         </div>
 
     </main>
