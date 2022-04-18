@@ -32,3 +32,8 @@ function buttonHandling(button, product, price){
 
    localStorage.setItem(product, quantity);
 }
+
+function submitHandling(product){
+    document.getElementsByName("quantity").item(0).value = 1;
+    localStorage.setItem(product, 1);
+}

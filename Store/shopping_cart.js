@@ -35,6 +35,9 @@ function buttonHandling(button, sessionQuantity){
 
    
    var quantity  = intQuantity.toString();
+   if(isNaN(quantity)){
+       quantity = 0;
+   }
 
    x.getElementsByClassName("itemQuantity").item(0).value =  quantity;
   
@@ -63,7 +66,10 @@ function buttonHandling(button, sessionQuantity){
 
    for(i = 0; i < document.getElementsByClassName("item").length; i++){
        var quantityText = document.getElementsByClassName("item").item(i).getElementsByClassName("itemQuantity").item(0).value;
-       totalQuantityOfItems += parseInt(quantityText);
+       if(isNaN(quantityText)){
+           totalQuantityOfItems += 0;
+       }else{
+       totalQuantityOfItems += parseInt(quantityText);}
    }
 
    document.getElementsByClassName("totalQuantityOfItems").item(0).innerText = "Total Items: " + totalQuantityOfItems;

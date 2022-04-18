@@ -58,7 +58,7 @@ if(isset($_POST["addToCart"])){
   
           foreach($xml->user as $user){
               if($user->email == $_SESSION["email"]){
-                  echo "woohoo";
+                  ;
                   $user->shoppingCart = $_SESSION["shoppingCart"];
                   
               }
@@ -68,6 +68,7 @@ if(isset($_POST["addToCart"])){
           
           
           $xmlUserData = fopen("../User/users.xml", 'w');
+          $_POST["quantity"] = 1;
 
         fwrite($xmlUserData, $stringinfo);
         fclose($xmlUserData);
@@ -165,7 +166,7 @@ if(isset($_POST["addToCart"])){
                     <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'Artichokes', 1.99)">
                     <button class="quantity--sign plus" onclick="buttonHandling(this, 'Artichokes', 1.99)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
-                <button class="add--cart" name = "addToCart">ADD TO CART</button>
+                <button class="add--cart" name = "addToCart" onclick = "submitHandling(this)">ADD TO CART</button>
                 </form>
                 <button id="more--description">MORE DESCRIPTION</button>
             </div>

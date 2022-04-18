@@ -33,8 +33,15 @@ $counter = count($sessionList)-1;
                               for($i = 0; $i <= $counter; $i++){
                                   $productInfoArray = explode(" ", $sessionList[$i]);
                                  $productInfoArray[2] = "Qty:" . $_POST["quantity_" . (String)$i];
+                                 if($_POST["quantity_" . (String)$i] == 0 || is_nan($_POST["quantity_" . (String)$i])){
+                                    unset($sessionList[$i]);
+                                    $sessionList = array_values($sessionList);
+
+                                 }else{
+                                    $sessionList[$i] = implode(" ", $productInfoArray);
+                                 }
                                   
-                                 $sessionList[$i] = implode(" ", $productInfoArray);
+                                 
                                 
                                  
                               }
@@ -140,7 +147,7 @@ $counter = count($sessionList)-1;
                                 <button alt = "Minus Sign" type = "button" name = "minus <?=$counter1?>" class ="buttonHandlingMinus" onclick= "buttonHandling(this, <?= $productQty?>)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
                                
                                     
-                                    <input type="number" name="quantity <?=$counter1?>" min="1" value="<?=$productQty?>" onchange="buttonHandling(this)" class = "itemQuantity">
+                                    <input type="number" name="quantity <?=$counter1?>" min="0" value="<?=$productQty?>" onchange="buttonHandling(this)" class = "itemQuantity">
                                    
                                
                                 <button alt = "Plus Sign" type = "button" name = "plus <?=$counter1?>" class ="buttonHandlingPlus" onclick= "buttonHandling(this, <?=$productQty?>)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
