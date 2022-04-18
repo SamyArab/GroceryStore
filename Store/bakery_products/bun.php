@@ -14,7 +14,7 @@ if(isset($_POST["addToCart"])){
             $counter = 0;
           foreach($array as $data1){
               $data = (String)$data1;
-              if($data.str_starts_with($product, 0)){
+              if(str_starts_with($data, $product)){
                   
                 
                 $alreadyExists = true;
@@ -26,29 +26,28 @@ if(isset($_POST["addToCart"])){
 
            
 
-
           if($alreadyExists == false){
-              $product .= (String)$_POST["quantity"];
-            array_push($array, ($product));
-            $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
-            
-          }else{
-            $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, strlen($array[$counter])));
-           
-            
-            $y = (int)$_POST["quantity"];
-        
-            $z = $x + $y;
-            $data = (String)($z);
-                
-            $array[$counter] = $product . $data;
-            $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+            $product .= (String)$_POST["quantity"];
+          array_push($array, ($product . " /Images/bakery/bun.jpg"));
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+          
+        }else{
+          $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, stripos($array[$counter], "/Images/bakery/bun.jpg", 0)));
+         
+          
+          $y = (int)$_POST["quantity"];
+      
+          $z = $x + $y;
+          $data = (String)($z);
+              
+          $array[$counter] = $product . $data . " /Images/bakery/bun.jpg";
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
 
-          }
+        }
          
           
 
-          $xml = simplexml_load_file('users.xml');
+          $xml = simplexml_load_file('../User/users.xml');
 
           if(!isset($xml)){
               $xml = '<?xml version="1.0" encoding="UTF-8" ?><users></users>';
@@ -58,11 +57,19 @@ if(isset($_POST["addToCart"])){
   
           foreach($xml->user as $user){
               if($user->email == $_SESSION["email"]){
-                  $user->shopping_cart = $_SESSION["shoppingCart"];
+                  echo "woohoo";
+                  $user->shoppingCart = $_SESSION["shoppingCart"];
+                  
               }
+              
           }
-      
+          $stringinfo = (String)($xml -> asXML());
           
+          
+          $xmlUserData = fopen("../User/users.xml", 'w');
+
+        fwrite($xmlUserData, $stringinfo);
+        fclose($xmlUserData);
 
          
            
@@ -75,51 +82,10 @@ if(isset($_POST["addToCart"])){
           
     }else{
 
-        if(!isset($_COOKIE["shoppingCart"])){
-            setcookie("shoppingCart", "", 3600*4);
-        }
-
-        $product = "Buns 5.99 Qty:";
-        $alreadyExists = false;
-        
-        $array = json_decode($_COOKIE["shoppingCart"], true, 512, 0);
-          $counter = 0;
-        foreach($array as $data1){
-            $data = (String)$data1;
-            if($data.str_starts_with($product, 0)){
-                
-              
-              $alreadyExists = true;
-             
-            }else{
-                $counter++;
-            }
-        }
-
-         
-
-
-        if($alreadyExists == false){
-            $product .= (String)$_POST["quantity"];
-          array_push($array, ($product));
-          $_COOKIE["shoppingCart"] = json_encode($array, 0, 512);
-          
-        }else{
-          $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, strlen($array[$counter])));
-         
-          
-          $y = (int)$_POST["quantity"];
-      
-          $z = $x + $y;
-          $data = (String)($z);
-              
-          $array[$counter] = $product . $data;
-          $_COOKIE["shoppingCart"] = json_encode($array, 0, 512);
-
-        }
+        header("Location: ../User/Pg5LogIn.php", true, 302);
+        exit();
        
-        
-
+  
         
 
 
@@ -127,6 +93,7 @@ if(isset($_POST["addToCart"])){
 
 
     session_write_close();
+    
 }
 
 

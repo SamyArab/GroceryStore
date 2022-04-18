@@ -14,7 +14,7 @@ if(isset($_POST["addToCart"])){
             $counter = 0;
           foreach($array as $data1){
               $data = (String)$data1;
-              if($data.str_starts_with($product, 0)){
+              if(str_starts_with($data, $product)){
                   
                 
                 $alreadyExists = true;
@@ -28,27 +28,27 @@ if(isset($_POST["addToCart"])){
 
 
           if($alreadyExists == false){
-              $product .= (String)$_POST["quantity"];
-            array_push($array, ($product));
-            $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
-            
-          }else{
-            $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, strlen($array[$counter])));
-           
-            
-            $y = (int)$_POST["quantity"];
-        
-            $z = $x + $y;
-            $data = (String)($z);
-                
-            $array[$counter] = $product . $data;
-            $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+            $product .= (String)$_POST["quantity"];
+          array_push($array, ($product . " /Images/bakery/croissant.jpg"));
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+          
+        }else{
+          $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, stripos($array[$counter], "/Images/bakery/croissant.jpg", 0)));
+         
+          
+          $y = (int)$_POST["quantity"];
+      
+          $z = $x + $y;
+          $data = (String)($z);
+              
+          $array[$counter] = $product . $data . " /Images/bakery/croissant.jpg";
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
 
-          }
+        }
          
           
 
-          $xml = simplexml_load_file('users.xml');
+          $xml = simplexml_load_file('../User/users.xml');
 
           if(!isset($xml)){
               $xml = '<?xml version="1.0" encoding="UTF-8" ?><users></users>';
@@ -58,11 +58,19 @@ if(isset($_POST["addToCart"])){
   
           foreach($xml->user as $user){
               if($user->email == $_SESSION["email"]){
-                  $user->shopping_cart = $_SESSION["shoppingCart"];
+                  echo "woohoo";
+                  $user->shoppingCart = $_SESSION["shoppingCart"];
+                  
               }
+              
           }
-      
+          $stringinfo = (String)($xml -> asXML());
           
+          
+          $xmlUserData = fopen("../User/users.xml", 'w');
+
+        fwrite($xmlUserData, $stringinfo);
+        fclose($xmlUserData);
 
          
            
@@ -75,51 +83,10 @@ if(isset($_POST["addToCart"])){
           
     }else{
 
-        if(!isset($_COOKIE["shoppingCart"])){
-            setcookie("shoppingCart", "", 3600*4);
-        }
-
-        $product = "Croissant 1.99 Qty:";
-        $alreadyExists = false;
-        
-        $array = json_decode($_COOKIE["shoppingCart"], true, 512, 0);
-          $counter = 0;
-        foreach($array as $data1){
-            $data = (String)$data1;
-            if($data.str_starts_with($product, 0)){
-                
-              
-              $alreadyExists = true;
-             
-            }else{
-                $counter++;
-            }
-        }
-
-         
-
-
-        if($alreadyExists == false){
-            $product .= (String)$_POST["quantity"];
-          array_push($array, ($product));
-          $_COOKIE["shoppingCart"] = json_encode($array, 0, 512);
-          
-        }else{
-          $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, strlen($array[$counter])));
-         
-          
-          $y = (int)$_POST["quantity"];
-      
-          $z = $x + $y;
-          $data = (String)($z);
-              
-          $array[$counter] = $product . $data;
-          $_COOKIE["shoppingCart"] = json_encode($array, 0, 512);
-
-        }
+        header("Location: ../User/Pg5LogIn.php", true, 302);
+        exit();
        
-        
-
+  
         
 
 
@@ -127,7 +94,11 @@ if(isset($_POST["addToCart"])){
 
 
     session_write_close();
+    
 }
+
+
+?>
 
 
 ?>
@@ -194,12 +165,15 @@ if(isset($_POST["addToCart"])){
                 <h3 class="name">Croissant</h3>
                 <span class="price">$1.99/ea</span>
                 <span class="price" id="price">Total: $1.99</span>
+                <form method = "POST">
                 <div class="quantity--controls">
                     <button class="quantity--sign minus" onclick="buttonHandling(this, 'Croissant', 1.99)"><img src="/Images/minus.png" alt="minus sign"></button>
                     <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'Croissant', 1.99)">
                     <button class="quantity--sign plus" onclick="buttonHandling(this, 'Croissant', 1.99)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
                 <button class="add--cart" name = "addToCart"> ADD TO CART </button>
+                </form>
+                
                 <button id="more--description"> MORE DESCRIPTION </button>
 
             </div>

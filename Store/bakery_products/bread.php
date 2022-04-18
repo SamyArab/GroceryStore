@@ -14,7 +14,7 @@ if(isset($_POST["addToCart"])){
             $counter = 0;
           foreach($array as $data1){
               $data = (String)$data1;
-              if($data.str_starts_with($product, 0)){
+              if(str_starts_with($data, $product)){
                   
                 
                 $alreadyExists = true;
@@ -28,23 +28,23 @@ if(isset($_POST["addToCart"])){
 
 
           if($alreadyExists == false){
-              $product .= (String)$_POST["quantity"];
-            array_push($array, ($product));
-            $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
-            
-          }else{
-            $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, strlen($array[$counter])));
-           
-            
-            $y = (int)$_POST["quantity"];
-        
-            $z = $x + $y;
-            $data = (String)($z);
-                
-            $array[$counter] = $product . $data;
-            $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+            $product .= (String)$_POST["quantity"];
+          array_push($array, ($product . " /Images/bakery/bread.png"));
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+          
+        }else{
+          $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, stripos($array[$counter], "/Images/bakery/bread.png", 0)));
+         
+          
+          $y = (int)$_POST["quantity"];
+      
+          $z = $x + $y;
+          $data = (String)($z);
+              
+          $array[$counter] = $product . $data . " /Images/bakery/bread.png";
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
 
-          }
+        }
          
           
 
