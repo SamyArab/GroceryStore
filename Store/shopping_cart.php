@@ -3,9 +3,9 @@ session_start();
 $sessionList;
 
 if(isset($_SESSION["email"])){
-    $sessionList = $_SESSION["shoppingCart"];
+    $sessionList = json_decode($_SESSION["shoppingCart"], true, 512, 0);
     
-    foreach(json_decode($sessionList, true, 512, 0) as $data){
+    foreach($sessionList as $data){
         print_r($data);
     }
 }else{
@@ -40,85 +40,73 @@ if(isset($_SESSION["email"])){
 
                 <div class="scrollableList">
                     <ol>
-                        <li>
 
 
-                            <div class="item">
+                        <?php
 
+                            if(isset($sessionList)){
 
-                                <div class="itemDisplay">
-                                    <img src="/Images/meat/ground_beef.png" alt="Ground Beef"></img>
-                                </div>
-
-                                <div class="itemDescription">
-                                    Ground Beef
-                                </div>
-                                <div class="itemPrice">
-                                    $7.29
-                                </div>
-                                <button alt = "Minus Sign" class ="buttonHandlingMinus" onclick= "buttonHandling(this)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
-                                <div class="itemQuantity">
-                                    Qty: x5
-                                </div>
-                                <button alt = "Plus Sign" class ="buttonHandlingPlus" onclick= "buttonHandling(this)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
-
-                            </div>
-
-                        </li>
-
-                        <li>
-
-
-                            <div class="item">
-
-
-                                <div class="itemDisplay">
-                                    <img src="/Images/meat/halal_beef.png" alt="Halal Beef"></img>
-                                </div>
-
-                                <div class="itemDescription">
-                                    Halal Beef
-                                </div>
-                                <div class="itemPrice">
-                                    $7.39
-                                </div>
+                                foreach($sessionList as $data){
+                                    $product = explode(" ", $data);
+                                    $productName;
+                                    $productImgAddress;
+                                    $productPrice;
+                                    
+                                    if(strpos($product[0], "_") !== false){
+                                    $productNameCompound = explode("_", $product[0]);
+                                    $productName= implode(" ", $productNameCompound);
+                                    }else{
+                                        $productName = $product[0];
+                                    }
+                                    $productQty = explode(":", $product[2])[1];
+                                    if(isset($product[3])){
+                                    $productImgAddress = $product[3];
+                                    }else{
+                                        $productImgAddress = "";
+                                    }
+                                    $productPrice = "$".$product[1];
+                                   
+                                 
                                
-                                   <button alt = "Minus Sign" class ="buttonHandlingMinus" onclick= "buttonHandling(this)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
-                               
-                                <div class="itemQuantity">
-                                    Qty: x2
-                                </div>
-                                <button alt = "Plus Sign" class ="buttonHandlingPlus" onclick= "buttonHandling(this)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
-                            </div>
+                                    
+                                    ?>
 
-                        </li>
-
-                        <li>
-
-
-                            <div class="item">
-
-
+                                <li>
+                                  
+                                <div class ="item">
+                                
                                 <div class="itemDisplay">
-                                    <img src="/Images/meat/whole_chicken.png" alt="Whole Chicken"></img>
+                                    <img src= "<?=$productImgAddress?>"></img>
                                 </div>
-
                                 <div class="itemDescription">
-                                    Whole Chicken
+                                    <?= $productName ?>
                                 </div>
                                 <div class="itemPrice">
-                                    $4.09
+                                    <?=$productPrice?>
                                 </div>
-                                <button alt = "Minus Sign" class ="buttonHandlingMinus" onclick= "buttonHandling(this)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
+                                
+                                <button alt = "Minus Sign" name = "minus <?=$productName?>" class ="buttonHandlingMinus" onclick= "buttonHandling(this, <?= $productQty?>)"> <img src = "/Images/minus.png" class = "buttonImages"></button>
                                 <div class="itemQuantity">
-                                    Qty: x1
+                                    <span name = "value <?=$productName?>">Qty: x<?=$productQty?></span>
                                 </div>
-                                <button alt = "Plus Sign" class ="buttonHandlingPlus" onclick= "buttonHandling(this)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
+                                <button alt = "Plus Sign" name = "plus <?=$productName?>" class ="buttonHandlingPlus" onclick= "buttonHandling(this, <?= $productQty?>)"> <img src = "/Images/plus.png" class = "buttonImages"></button>
+                                
+                                <div>
+                                    
+                               
+                                </li>
 
-                            </div>
 
-                        </li>
+                                <?php }
 
+
+                            }
+
+
+
+                            ?>
+                        
+                        
 
 
                 </div>

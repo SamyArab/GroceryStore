@@ -1,7 +1,7 @@
 
 
 
-function buttonHandling(button){
+function buttonHandling(button, sessionQuantity){
    var x = button.parentNode;
    var itemType = x.getElementsByClassName("itemDescription").item(0).innerText;
    var text = x.getElementsByClassName("itemQuantity").item(0).innerText;
@@ -9,17 +9,26 @@ function buttonHandling(button){
    var rawPrice = x.getElementsByClassName("itemPrice").item(0).innerText;
    var price = parseFloat(rawPrice.substring(1, rawPrice.length));
    var totalPriceOfAllItems = 0;
+   
+  
 
 
 
    if(button.className == "buttonHandlingMinus"){
        if(intQuantity > 0){
         intQuantity -= 1;
+        
+       
+        
        }
        
    }
    if(button.className == "buttonHandlingPlus"){
        intQuantity += 1;
+       
+       
+       
+      
    }
 
    
@@ -72,7 +81,9 @@ document.getElementsByClassName("totalSum").item(0).innerText = "Total: $" + tot
 }
 
 
-
+function update(){
+    
+}
 
 
 

@@ -1,6 +1,102 @@
 <?php
 session_start();
 
+
+
+
+if(isset($_POST["addToCart"])){
+    if(isset($_SESSION["email"])){
+       
+          $product = "Strawberries 0.39 Qty:";
+          $alreadyExists = false;
+          
+          $array = json_decode($_SESSION["shoppingCart"], true, 512, 0);
+            $counter = 0;
+          foreach($array as $data1){
+              $data = (String)$data1;
+              if(str_starts_with($data, $product)){
+                  
+                
+                $alreadyExists = true;
+               
+              }else{
+                  $counter++;
+              }
+          }
+
+           
+
+          if($alreadyExists == false){
+            $product .= (String)$_POST["quantity"];
+          array_push($array, ($product . " /Images/f&v/strawberries.png"));
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+          
+        }else{
+          $x = (int)(substr($array[$counter], stripos($array[$counter],":", 0)+1, stripos($array[$counter], "/Images/f&v/strawberries.png", 0)));
+         
+          
+          $y = (int)$_POST["quantity"];
+      
+          $z = $x + $y;
+          $data = (String)($z);
+              
+          $array[$counter] = $product . $data . " /Images/f&v/strawberries.png";
+          $_SESSION["shoppingCart"] = json_encode($array, 0, 512);
+
+        }
+         
+          
+
+          $xml = simplexml_load_file('../User/users.xml');
+
+          if(!isset($xml)){
+              $xml = '<?xml version="1.0" encoding="UTF-8" ?><users></users>';
+  
+              $xml = simplexml_load_string($xml);
+          }
+  
+          foreach($xml->user as $user){
+              if($user->email == $_SESSION["email"]){
+                  echo "woohoo";
+                  $user->shoppingCart = $_SESSION["shoppingCart"];
+                  
+              }
+              
+          }
+          $stringinfo = (String)($xml -> asXML());
+          
+          
+          $xmlUserData = fopen("../User/users.xml", 'w');
+
+        fwrite($xmlUserData, $stringinfo);
+        fclose($xmlUserData);
+
+         
+           
+
+         
+             
+         
+          
+       
+          
+    }else{
+
+        header("Location: ../User/Pg5LogIn.php", true, 302);
+        exit();
+       
+  
+        
+
+
+    }
+
+
+    session_write_close();
+    
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,12 +157,14 @@ session_start();
                 <h3 class="name">Delicious Strawberries</h3>
                 <span class="price">$.39/each</span>
                 <span class="price" id="price">Total: $0.39</span>
+                <form method = "POST">
                 <div class="quantity--controls">
                     <button class="quantity--sign minus" onclick="buttonHandling(this, 'Strawberries', 0.39)"><img src="/Images/minus.png" alt="minus sign"></button>
                     <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'Strawberries', 0.39)">
                     <button class="quantity--sign plus" onclick="buttonHandling(this, 'Strawberries', 0.39)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
                 <button class="add--cart" name = "addToCart">ADD TO CART</button>
+                </form>
                 <button id="more--description">MORE DESCRIPTION</button>
             </div>
 
