@@ -61,7 +61,7 @@ if(isset($_POST['add'])){
         <nav>
             <a class="navbtn" href="./productlist.php">Product List</a>
             <a class="navbtn" href="./userlist.php">User List</a>
-            <a class="navbtn" href="./orderlist.html">Order List</a>
+            <a class="navbtn" href="./orderlist.php">Order List</a>
         </nav>
     </header>
     <main>
