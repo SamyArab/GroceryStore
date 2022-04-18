@@ -66,7 +66,7 @@ session_start();
         <div class="featured--items">
             <section class="item--list">
 
-                <a href="/Store/fruits_description/apples.html" style="text-decoration: inherit; color: inherit;">
+                <a href="/Store/fruits_description/apples.php" style="text-decoration: inherit; color: inherit;">
                     <div class="items">
                             <img src="/Images/f&v/apples.png">
                         <div class="item--info">
@@ -78,7 +78,7 @@ session_start();
                     </div>
                 </a>
 
-                <a href="/Store/fruits_description/mangos.html" style="text-decoration: inherit; color: inherit;">
+                <a href="/Store/fruits_description/mangos.php" style="text-decoration: inherit; color: inherit;">
                     <div class="items">
                         <img src="/Images/f&v/mangos.png">
                         <div class="item--info">
@@ -90,7 +90,7 @@ session_start();
                     </div>
                 </a>
 
-                <a href="/Store/fruits_description/oranges.html" style="text-decoration: inherit; color: inherit;">
+                <a href="/Store/fruits_description/oranges.php" style="text-decoration: inherit; color: inherit;">
                     <div class="items">
                         <img src="/Images/f&v/oranges.png">
                         <div class="item--info">
@@ -102,7 +102,7 @@ session_start();
                     </div>
                 </a>
 
-                <a href="/Store/fruits_description/asparagus.html" style="text-decoration: inherit; color: inherit;">
+                <a href="/Store/fruits_description/asparagus.php" style="text-decoration: inherit; color: inherit;">
                     <div class="items">
                         <img src="/Images/f&v/asparagus.png">
                         <div class="item--info">
@@ -114,7 +114,7 @@ session_start();
                     </div>
                 </a>
 
-                <a href="/Store/fruits_description/cauliflower.html" style="text-decoration: inherit; color: inherit;">
+                <a href="/Store/fruits_description/cauliflower.php" style="text-decoration: inherit; color: inherit;">
                     <div class="items">
                         <img src="/Images/f&v/cauliflower.png">
                         <div class="item--info">
@@ -126,7 +126,7 @@ session_start();
                     </div>
                 </a>
 
-                <a href="/Store/fruits_description/onions.html" style="text-decoration: inherit; color: inherit;">
+                <a href="/Store/fruits_description/onions.php" style="text-decoration: inherit; color: inherit;">
                     <div class="items">
                         <img src="/Images/f&v/onions.png">
                         <div class="item--info">
