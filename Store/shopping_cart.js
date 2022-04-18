@@ -11,7 +11,7 @@ function buttonHandling(button, sessionQuantity){
    var totalPriceOfAllItems = 0;
    
   
-
+    
 
 
    if(button.className == "buttonHandlingMinus"){
