@@ -97,7 +97,7 @@ if(isset($_POST["addToCart"])){
 
     session_write_close();
     
-}
+
 
 
 ?>

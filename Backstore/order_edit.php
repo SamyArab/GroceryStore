@@ -56,15 +56,9 @@
                         }
                     }
                 }
-
-                
-
             }
-        }
-        
+        }  
     }
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -95,9 +89,9 @@
                 <div class="editArea">
                     <form  method="post">
                         <p>Product Names:</p>
-                        <input class="editFields" type="text" name="names" placeholder="Enter product names" <?php if(isset($editNames)) {print "value=\"$editNames\"";} ?>>
+                        <input class="editFields" type="text" name="names" placeholder="Enter product names seperated by commas" <?php if(isset($editNames)) {print "value=\"$editNames\"";} ?>>
                         <p>Amount:</p>
-                        <input class="editFields" type="text" name="amounts" placeholder="Enter the amount of each product" <?php if(isset($editAmounts)) {print "value=\"$editAmounts\"";} ?>>
+                        <input class="editFields" type="text" name="amounts" placeholder="Enter the amount of each product seperated by commas" <?php if(isset($editAmounts)) {print "value=\"$editAmounts\"";} ?>>
                         <input type="hidden" name="add" value=<?php $add ? print "\"add\"" : print "\"edit\"" ?>>
                         <input type="submit" class="btn" value="Save" style="float: right; margin-top: 20px;">
                     </form>
