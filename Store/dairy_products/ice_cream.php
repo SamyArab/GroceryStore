@@ -117,11 +117,11 @@ if(isset($_POST["addToCart"])){
 
         <nav class="navbar">
             <ul class="aisles">
-                <li><a href="/Store/aisle_fruit.html">Fruits & Vegetables</a></li>
-                <li><a href="/Store/aisle_meat.html">Meats</a></li>
-                <li><a href="/Store/aisle_dairy.html">Dairy</a></li>
-                <li><a href="/Store/aisle_snacks.html">Snacks</a></li>
-                <li><a href="/Store/aisle_bakery.html">Baking</a></li>
+                <li><a href="/Store/aisle_fruit.php">Fruits & Vegetables</a></li>
+                <li><a href="/Store/aisle_meat.php">Meats</a></li>
+                <li><a href="/Store/aisle_dairy.php">Dairy</a></li>
+                <li><a href="/Store/aisle_snacks.php">Snacks</a></li>
+                <li><a href="/Store/aisle_bakery.php">Baking</a></li>
 <?php if(isset($_SESSION['email'])){ ?>
                         <li><?php echo $_SESSION['email'] ?> </li>
                 
@@ -137,11 +137,11 @@ if(isset($_POST["addToCart"])){
         <div class="icons">
             <div class="dropdown" role="checkbox"><img src="/Images/header/hambuger-icon.png" alt="Drop down menu">
                 <ul class="dropdown-list">
-                    <li><a href="/Store/aisle_fruit.html" class="dropdown-content">Fruits & Vegetables</a></li>
-                    <li><a href="/Store/aisle_meat.html" class="dropdown-content">Meats</a></li>
-                    <li><a href="/Store/aisle_dairy.html" class="dropdown-content">Dairy</a></li>
-                    <li><a href="/Store/aisle_snacks.html" class="dropdown-content">Snacks</a></li>
-                    <li><a href="/Store/aisle_bakery.html" class="dropdown-content">Bakery</a></li>
+                    <li><a href="/Store/aisle_fruit.php" class="dropdown-content">Fruits & Vegetables</a></li>
+                    <li><a href="/Store/aisle_meat.php" class="dropdown-content">Meats</a></li>
+                    <li><a href="/Store/aisle_dairy.php" class="dropdown-content">Dairy</a></li>
+                    <li><a href="/Store/aisle_snacks.php" class="dropdown-content">Snacks</a></li>
+                    <li><a href="/Store/aisle_bakery.php" class="dropdown-content">Bakery</a></li>
                 </ul>
             </div>
 
@@ -151,7 +151,7 @@ if(isset($_POST["addToCart"])){
     </header>
     
     <main>
-        <a href="/Store/aisle_dairy.html" class="back">BACK</a>
+        <a href="/Store/aisle_dairy.php" class="back">BACK</a>
     
         <div class="item--container">
             <img src="/Images/dairy/ice_cream.png" alt="cheese">
