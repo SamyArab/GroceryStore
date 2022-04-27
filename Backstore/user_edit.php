@@ -22,7 +22,7 @@
                     if($user->email == $_SESSION["editEmail"] && $user->password == $_SESSION["editPsw"]){
                         $user->email = $newEmail;
                         $user->password = md5(sha1($newPsw));
-                        $xml->asXML('=../Store/User/users.xml');
+                        $xml->asXML('../Store/User/users.xml');
                         $message = "The user has been edited successfully!";
                         break;
                     }
