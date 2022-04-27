@@ -27,6 +27,7 @@ if(isset($_POST["addToCart"])){
            
 
 
+
           if($alreadyExists == false){
             $product .= (String)$_POST["quantity"];
           array_push($array, ($product . " /Images/snacks/Fanta.png"));
@@ -68,7 +69,7 @@ if(isset($_POST["addToCart"])){
           
           
           $xmlUserData = fopen("../User/users.xml", 'w');
-          $_POST["quantity"] = 1;
+          
 
         fwrite($xmlUserData, $stringinfo);
         fclose($xmlUserData);
@@ -168,7 +169,7 @@ if(isset($_POST["addToCart"])){
                     <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'Fanta', 5.99)">
                     <button class="quantity--sign plus" onclick="buttonHandling(this, 'Fanta', 5.99)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
-                <button class="add--cart" name = "addToCart" onclick = "submitHandling(this)"> ADD TO CART </button>
+                <button class="add--cart" name = "addToCart" onclick = "submitHandling('Fanta')"> ADD TO CART </button>
                 </form>
                 <button id="more--description"> MORE DESCRIPTION </button>
     

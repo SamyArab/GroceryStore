@@ -107,6 +107,10 @@ $counter = count($sessionList)-1;
                                 $counter1 = 0;
                                 foreach($sessionList as $data){
                                     $product = explode(" ", $data);
+                                    if(isset($product[3])){
+                                        $productImgAddress = $product[3];
+                                        
+                                    
                                     $productName;
                                     $productImgAddress;
                                     $productPrice;
@@ -117,14 +121,15 @@ $counter = count($sessionList)-1;
                                     }else{
                                         $productName = $product[0];
                                     }
-                                    $productQty = explode(":", $product[2])[1];
-                                    if(isset($product[3])){
-                                    $productImgAddress = $product[3];
-                                    }else{
-                                        $productImgAddress = "";
+                                    if(isset($product[2])){
+                                        $productQty = explode(":", $product[2])[1];
                                     }
+                                    
+                                    
+                                    $productImgAddress = $product[3];
+                                    
                                     $productPrice = "$".$product[1];
-                                   
+                                
                                  
                                
                                    
@@ -158,7 +163,7 @@ $counter = count($sessionList)-1;
                                 </li>
 
 
-                                <?php $counter1++;}
+                                <?php $counter1++;}}
 
 
                                 }?>
@@ -199,6 +204,7 @@ $counter = count($sessionList)-1;
                     
                                 foreach($sessionList as $data){
                                     $product = explode(" ", $data);
+                                    if(isset($product[3])){
                                     $productName;
                                     $productImgAddress;
                                     $productPrice;
@@ -209,7 +215,9 @@ $counter = count($sessionList)-1;
                                     }else{
                                         $productName = $product[0];
                                     }
-                                    $productQty = explode(":", $product[2])[1];
+                                    if(isset($product[2])){
+                                        $productQty = explode(":", $product[2])[1];
+                                    }
                                     $totalQty += (int)$productQty;
                                     
                                     $productPrice = (double)$product[1] * (double)$productQty;
@@ -223,7 +231,7 @@ $counter = count($sessionList)-1;
                 ?>
                 <h3 class = "totalItems"><?=$productName?> x<?=$productQty?> $<?=number_format((float)$productPrice, 2, '.', '')?> </h3>
 
-                <?php }}?>
+                <?php }}}?>
                 
 
             </div>

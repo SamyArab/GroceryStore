@@ -69,7 +69,7 @@ if(isset($_POST["addToCart"])){
           
           
           $xmlUserData = fopen("../User/users.xml", 'w');
-          $_POST["quantity"] = 1;
+          
 
         fwrite($xmlUserData, $stringinfo);
         fclose($xmlUserData);
@@ -169,7 +169,7 @@ if(isset($_POST["addToCart"])){
                     <input type="number" name="quantity" min="1" value="1" onchange="buttonHandling(this, 'OrangeJuice', 6.99)">
                     <button class="quantity--sign plus" onclick="buttonHandling(this, 'OrangeJuice', 6.99)"><img src="/Images/plus.png" alt="plus sign"></button>
                 </div>
-                <button class="add--cart" name = "addToCart" onclick = "submitHandling(this)"> ADD TO CART </button>
+                <button class="add--cart" name = "addToCart" onclick = "submitHandling('OrangeJuice')"> ADD TO CART </button>
                 </form>
                 <button id="more--description"> MORE DESCRIPTION </button>
 

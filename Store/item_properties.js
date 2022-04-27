@@ -34,6 +34,7 @@ function buttonHandling(button, product, price){
 }
 
 function submitHandling(product){
-    document.getElementsByName("quantity").item(0).value = 1;
-    localStorage.setItem(product, 1);
+    var quantity = parseInt(document.getElementsByName("quantity").item(0).value);
+    quantity = 1;
+    localStorage.setItem(product, quantity);
 }

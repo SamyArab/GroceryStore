@@ -68,7 +68,7 @@ if(isset($_POST["addToCart"])){
           
           
           $xmlUserData = fopen("../User/users.xml", 'w');
-          $_POST["quantity"] = 1;
+          
 
         fwrite($xmlUserData, $stringinfo);
         fclose($xmlUserData);
